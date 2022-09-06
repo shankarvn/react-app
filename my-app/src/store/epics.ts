@@ -1,9 +1,9 @@
 import { combineEpics, ofType } from 'redux-observable';
 import { map, mergeMap, Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
+import { Article } from '../api/dto';
+import { API } from '../api/service';
 
-import { Article } from '../components/api/dto';
-import { API } from '../components/api/service';
 import { FETCH_ARTICLES, POPULATE_ARTICLES } from './actions';
 import { AppState } from './state';
 

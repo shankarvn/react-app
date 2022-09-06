@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { ActionType } from 'typesafe-actions';
-import { API } from '../components/api/service';
+import { API } from '../api/service';
 import * as actions from './actions';
 import { epics } from './epics';
 import { rootReducer } from './reducers';

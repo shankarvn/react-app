@@ -1,4 +1,4 @@
-import { Article } from '../components/api/dto';
+import { Article } from '../api/dto';
 
 export const FETCH_ARTICLES = 'FETCH-ARTICLES';
 export const fetchArticles = () => ({ type: FETCH_ARTICLES, payload: null });

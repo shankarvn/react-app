@@ -1,4 +1,4 @@
-import { Article } from '../components/api/dto';
+import { Article } from '../api/dto';
 
 export interface AppState {
     articlesState: ArticlesState;
