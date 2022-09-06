@@ -1,7 +1,7 @@
 import { Observable, of } from "rxjs";
 import { Article } from "./dto";
 
-class ArticlesService {
+export class ArticlesService {
 
     articleDetails: Article[];
 

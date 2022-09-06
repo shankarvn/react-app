@@ -14,7 +14,7 @@ export const SampleRedux: React.FC<any> = () => {
 
     useEffect(() => {
         store.dispatch(fetchArticles());
-    })
+    }, [])
 
     
 
