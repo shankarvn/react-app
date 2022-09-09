@@ -22,6 +22,13 @@ export class ArticlesService {
         return of(article);
     }
 
+    removeArticle(id: string): Observable<Article[]> {
+        this.articleDetails = this.articleDetails.filter((value: Article) => {
+            return value.id !== id;
+        })
+        return of(this.articleDetails);
+    }
+
     getArticleById(id: string): Observable<Article[]> {
         return of(this.articleDetails.filter((each) => {
             return each.id === id;

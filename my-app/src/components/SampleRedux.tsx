@@ -1,31 +1,44 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { Article } from '../api/dto';
 
 import { store } from '../store';
 import { fetchArticles } from '../store/actions';
 import { AppState } from '../store/state';
+import { ArticlesGrid } from './ArticlesGrid';
+import { CreateArticleModal } from './CreateArticle';
 
 export const SampleRedux: React.FC<any> = () => {
 
+    const [show, setShow] = useState(false);
+    const [remove, setRemove] = useState(false);
+
     const entity = useSelector((state: AppState) => {
-        return state?.articlesState;
+        return Object.values(state?.articlesState?.articles);
     });
 
     useEffect(() => {
         store.dispatch(fetchArticles());
-    }, [])
+    }, []);
 
+    const handleCreation = () => {
+        setShow(true);
+    }
+
+    const handleClose = () => {
+        setShow(false);
+    }
     
+    const handleDeleteSelected = () => {
+        setRemove(true);
+    }
 
     return (
-        <ul>
-            {
-                entity && Object.entries(entity?.articles).map(([key, value]: [string, Article]) => {
-                    return (<li>{value.title}</li>);
-                })
-            }
-        </ul>
-
+        <Fragment>
+            <Button onClick={handleCreation}> CREATE </Button>
+            <Button onClick={handleDeleteSelected} style={{marginLeft: "6px"}}> DELETE SELECTED </Button>
+            <CreateArticleModal showModal={show} handleClose={handleClose}/>
+            <ArticlesGrid rowData={entity} remove={remove}/>
+        </Fragment>
     )
 }
